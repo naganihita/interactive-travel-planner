@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Decision Tree</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('travel.avif') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 350px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        h3 {
+            font-size: 1.8em;
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 1.1em;
+            color: #333;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            border: 2px solid #007BFF;
+            border-radius: 5px;
+            background-color: #fff;
+            transition: border-color 0.3s;
+        }
+        select:focus {
+            outline: none;
+            border-color: #0056b3;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007BFF;
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+            box-shadow: 0 5px 15px rgba(0, 91, 187, 0.4);
+        }
+        p {
+            font-size: 1.2em;
+            color: #333;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h3>Plan Your Perfect Trip</h3>
+    <label for="location">Do you prefer the mountains or the beach?</label>
+    <select id="location">
+        <option value="Mountains">Mountains</option>
+        <option value="Beach">Beach</option>
+    </select>
+
+    <label for="activity">Are you looking for adventure or relaxation?</label>
+    <select id="activity">
+        <option value="Adventure">Adventure</option>
+        <option value="Relaxation">Relaxation</option>
+    </select>
+
+    <label for="budget">What’s your budget?</label>
+    <select id="budget">
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+    </select>
+
+    <button onclick="generateRecommendation()">Get Recommendation</button>
+    <p id="output"></p>
+</div>
+
+<script>
+    function generateRecommendation() {
+        const location = document.getElementById("location").value;
+        const activity = document.getElementById("activity").value;
+        const budget = document.getElementById("budget").value;
+
+        let recommendation = "";
+
+        if (location === "Beach" && activity === "Adventure" && budget === "Low") {
+            recommendation = "Try Costa Rica for an affordable beach adventure! Enjoy surfing, ziplining through rainforests, and exploring natural reserves.";
+        } else if (location === "Beach" && activity === "Adventure" && budget === "Medium") {
+            recommendation = "We recommend an adventure trip to the Algarve, Portugal! Experience stunning cliffs, water sports, and scenic hikes with a medium budget.";
+        } else if (location === "Beach" && activity === "Adventure" && budget === "High") {
+            recommendation = "For a high-budget adventure, explore Australia’s Gold Coast! Surf world-famous beaches, skydive over stunning landscapes, and enjoy luxury resorts.";
+        } else if (location === "Beach" && activity === "Relaxation" && budget === "Low") {
+            recommendation = "Relax on the affordable beaches of Goa, India. Enjoy laid-back vibes, beautiful sunsets, and local cuisine without breaking the bank.";
+        } else if (location === "Beach" && activity === "Relaxation" && budget === "Medium") {
+            recommendation = "We recommend Palawan, Philippines, for a relaxing beach escape. Enjoy serene waters, island hopping, and beautiful coral reefs with a medium budget.";
+        } else if (location === "Beach" && activity === "Relaxation" && budget === "High") {
+            recommendation = "Indulge in a luxurious getaway to Bora Bora, French Polynesia. Overwater bungalows, turquoise waters, and serene beaches await with a high budget.";
+        } else if (location === "Mountains" && activity === "Adventure" && budget === "Low") {
+            recommendation = "Explore the Atlas Mountains in Morocco for an affordable mountain adventure. Hike through scenic valleys and experience Berber culture.";
+        } else if (location === "Mountains" && activity === "Adventure" && budget === "Medium") {
+            recommendation = "Trek the Himalayas, Nepal, for a medium-budget mountain adventure. Take on challenging hikes with incredible views of the world’s highest peaks.";
+        } else if (location === "Mountains" && activity === "Adventure" && budget === "High") {
+            recommendation = "Head to the Swiss Alps for a high-budget adventure. Experience world-class skiing, mountaineering, and luxury chalets in one of the most scenic destinations.";
+        } else if (location === "Mountains" && activity === "Relaxation" && budget === "Low") {
+            recommendation = "Relax in the Appalachian Mountains, USA, for a peaceful and affordable getaway. Enjoy nature, peaceful hikes, and cozy cabins on a low budget.";
+        } else if (location === "Mountains" && activity === "Relaxation" && budget === "Medium") {
+            recommendation = "Visit the Blue Ridge Mountains in the USA for a relaxing retreat. With a medium budget, enjoy cozy cabins, scenic drives, and serene nature walks.";
+        } else if (location === "Mountains" && activity === "Relaxation" && budget === "High") {
+            recommendation = "A luxurious stay in Aspen, Colorado, USA, will give you the relaxation you crave. Enjoy high-end resorts, spas, and breathtaking mountain views.";
+        } else {
+            recommendation = "Based on your preferences, we will suggest a custom trip soon!";
+        }
+
+        document.getElementById("output").innerText = recommendation;
+    }
+</script>
+
+</body>
+</html>
